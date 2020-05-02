@@ -187,7 +187,7 @@ class CatCodingPanel {
 						<title>YASHE</title>
 
 					<!--EDITOR STYLES-->
-					<link href="${cssUri}" rel="stylesheet" type="text/css" />
+					<link nonce="${nonce}" href="${cssUri}" rel="stylesheet" type="text/css" />
 
 					</head>
 					<body>
@@ -200,9 +200,6 @@ class CatCodingPanel {
 							var yashe = YASHE(document.getElementById('yasheContainer'));
 							yashe.setOption("fullScreen", true);
 						</script>
-
-					
-
 
 					</body>
 					</html>`;
@@ -217,3 +214,5 @@ function getNonce() {
 	}
 	return text;
 }
+
+
