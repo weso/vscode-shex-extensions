@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const path = require("path");
 const vscode = require("vscode");
 function activate(context) {
-    context.subscriptions.push(vscode.commands.registerCommand('catCoding.start', () => {
+    context.subscriptions.push(vscode.commands.registerCommand('shex.start', () => {
         ShExPanel.createOrShow(context.extensionPath);
     }));
     if (vscode.window.registerWebviewPanelSerializer) {
@@ -126,7 +126,7 @@ class ShExPanel {
 					</html>`;
     }
 }
-ShExPanel.viewType = 'catCoding';
+ShExPanel.viewType = 'shex';
 function getNonce() {
     let text = '';
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

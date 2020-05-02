@@ -1,8 +1,8 @@
 {
-	"name": "cat-coding",
-	"description": "Cat Coding - A Webview API Sample",
+	"name": "vscode-shex-extension",
+	"description": "ShEx extension for Visual Studio Code",
 	"version": "0.0.1",
-	"publisher": "vscode-samples",
+	"publisher": "Pablo Menéndez",
 	"engines": {
 		"vscode": "^1.38.0"
 	},
@@ -10,26 +10,20 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:catCoding.start",
-		"onCommand:catCoding.doRefactor",
-		"onWebviewPanel:catCoding"
+		"onCommand:shex.start",
+		"onWebviewPanel:shex"
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/microsoft/vscode-extension-samples.git"
+		"url": "https://github.com/mistermboy/vscode-shex-extension"
 	},
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "catCoding.start",
-				"title": "Start cat coding session",
-				"category": "Cat Coding"
-			},
-			{
-				"command": "catCoding.doRefactor",
-				"title": "Do some refactoring",
-				"category": "Cat Coding"
+				"command": "shex.start",
+				"title": "Start Editor",
+				"category": "ShEx"
 			}
 		]
 	},

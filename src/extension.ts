@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
-		vscode.commands.registerCommand('catCoding.start', () => {
+		vscode.commands.registerCommand('shex.start', () => {
 			ShExPanel.createOrShow(context.extensionPath);
 		})
 	);
@@ -24,7 +24,7 @@ class ShExPanel {
 
 	public static currentPanel: ShExPanel | undefined;
 
-	public static readonly viewType = 'catCoding';
+	public static readonly viewType = 'shex';
 
 	private readonly _panel: vscode.WebviewPanel;
 	private readonly _extensionPath: string;
