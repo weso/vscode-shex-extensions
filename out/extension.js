@@ -11,37 +11,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const path = require("path");
 const vscode = require("vscode");
-const cats = {
-    'Coding Cat': 'https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif',
-    'Compiling Cat': 'https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif',
-    'Testing Cat': 'https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif'
-};
 function activate(context) {
     context.subscriptions.push(vscode.commands.registerCommand('catCoding.start', () => {
-        CatCodingPanel.createOrShow(context.extensionPath);
-    }));
-    context.subscriptions.push(vscode.commands.registerCommand('catCoding.doRefactor', () => {
-        if (CatCodingPanel.currentPanel) {
-            CatCodingPanel.currentPanel.doRefactor();
-        }
+        ShExPanel.createOrShow(context.extensionPath);
     }));
     if (vscode.window.registerWebviewPanelSerializer) {
         // Make sure we register a serializer in activation event
-        vscode.window.registerWebviewPanelSerializer(CatCodingPanel.viewType, {
+        vscode.window.registerWebviewPanelSerializer(ShExPanel.viewType, {
             deserializeWebviewPanel(webviewPanel, state) {
                 return __awaiter(this, void 0, void 0, function* () {
                     console.log(`Got state: ${state}`);
-                    CatCodingPanel.revive(webviewPanel, context.extensionPath);
+                    ShExPanel.revive(webviewPanel, context.extensionPath);
                 });
             }
         });
     }
 }
 exports.activate = activate;
-/**
- * Manages cat coding webview panels
- */
-class CatCodingPanel {
+class ShExPanel {
     constructor(panel, extensionPath) {
         this._disposables = [];
         this._panel = panel;
@@ -71,29 +58,24 @@ class CatCodingPanel {
             ? vscode.window.activeTextEditor.viewColumn
             : undefined;
         // If we already have a panel, show it.
-        if (CatCodingPanel.currentPanel) {
-            CatCodingPanel.currentPanel._panel.reveal(column);
+        if (ShExPanel.currentPanel) {
+            ShExPanel.currentPanel._panel.reveal(column);
             return;
         }
         // Otherwise, create a new panel.
-        const panel = vscode.window.createWebviewPanel(CatCodingPanel.viewType, 'Cat Coding', column || vscode.ViewColumn.One, {
+        const panel = vscode.window.createWebviewPanel(ShExPanel.viewType, 'ShEx Editor', column || vscode.ViewColumn.One, {
             // Enable javascript in the webview
             enableScripts: true,
             // And restrict the webview to only loading content from our extension's `media` directory.
             localResourceRoots: [vscode.Uri.file(path.join(extensionPath, 'media'))]
         });
-        CatCodingPanel.currentPanel = new CatCodingPanel(panel, extensionPath);
+        ShExPanel.currentPanel = new ShExPanel(panel, extensionPath);
     }
     static revive(panel, extensionPath) {
-        CatCodingPanel.currentPanel = new CatCodingPanel(panel, extensionPath);
-    }
-    doRefactor() {
-        // Send a message to the webview webview.
-        // You can send any JSON serializable data.
-        this._panel.webview.postMessage({ command: 'refactor' });
+        ShExPanel.currentPanel = new ShExPanel(panel, extensionPath);
     }
     dispose() {
-        CatCodingPanel.currentPanel = undefined;
+        ShExPanel.currentPanel = undefined;
         // Clean up our resources
         this._panel.dispose();
         while (this._disposables.length) {
@@ -105,25 +87,10 @@ class CatCodingPanel {
     }
     _update() {
         const webview = this._panel.webview;
-        // Vary the webview's content based on where it is located in the editor.
-        switch (this._panel.viewColumn) {
-            case vscode.ViewColumn.Two:
-                this._updateForCat(webview, 'Compiling Cat');
-                return;
-            case vscode.ViewColumn.Three:
-                this._updateForCat(webview, 'Testing Cat');
-                return;
-            case vscode.ViewColumn.One:
-            default:
-                this._updateForCat(webview, 'Coding Cat');
-                return;
-        }
+        this._panel.title = 'ShEx Editor';
+        this._panel.webview.html = this._getHtmlForWebview(webview);
     }
-    _updateForCat(webview, catName) {
-        this._panel.title = catName;
-        this._panel.webview.html = this._getHtmlForWebview(webview, cats[catName]);
-    }
-    _getHtmlForWebview(webview, catGifPath) {
+    _getHtmlForWebview(webview) {
         // Local path to main script run in the webview
         const scriptPathOnDisk = vscode.Uri.file(path.join(this._extensionPath, 'media', 'yashe.bundled.min.js'));
         const cssPathOnDisk = vscode.Uri.file(path.join(this._extensionPath, 'media', 'yashe.min.css'));
@@ -159,7 +126,7 @@ class CatCodingPanel {
 					</html>`;
     }
 }
-CatCodingPanel.viewType = 'catCoding';
+ShExPanel.viewType = 'catCoding';
 function getNonce() {
     let text = '';
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
