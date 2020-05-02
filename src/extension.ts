@@ -164,36 +164,48 @@ class CatCodingPanel {
 	private _getHtmlForWebview(webview: vscode.Webview, catGifPath: string) {
 		// Local path to main script run in the webview
 		const scriptPathOnDisk = vscode.Uri.file(
-			path.join(this._extensionPath, 'media', 'main.js')
+			path.join(this._extensionPath, 'media', 'yashe.bundled.min.js')
+		);
+
+		const cssPathOnDisk = vscode.Uri.file(
+			path.join(this._extensionPath, 'media', 'yashe.min.css')
 		);
 
 		// And the uri we use to load this script in the webview
 		const scriptUri = webview.asWebviewUri(scriptPathOnDisk);
+		const cssUri = webview.asWebviewUri(cssPathOnDisk);
 
 		// Use a nonce to whitelist which scripts can be run
 		const nonce = getNonce();
 
 		return `<!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
+					<html lang="en">
+					<head>
+						<meta charset="utf-8">
+						<meta http-equiv="X-UA-Compatible" content="IE=edge">
+						<meta name="viewport" content="width=device-width, initial-scale=1">
+						<title>YASHE</title>
 
-                <!--
-                Use a content security policy to only allow loading images from https or from our extension directory,
-                and only allow scripts that have a specific nonce.
-                -->
-                <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src ${webview.cspSource} https:; script-src 'nonce-${nonce}';">
+					<!--EDITOR STYLES-->
+					<link href="${cssUri}" rel="stylesheet" type="text/css" />
 
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Cat Coding</title>
-            </head>
-            <body>
-                <img src="${catGifPath}" width="300" />
-                <h1 id="lines-of-code-counter">0</h1>
+					</head>
+					<body>
 
-                <script nonce="${nonce}" src="${scriptUri}"></script>
-            </body>
-            </html>`;
+						<div id="yasheContainer"></div>
+					
+						<script nonce="${nonce}" src="${scriptUri}"></script>
+
+						<script type="text/javascript">
+							var yashe = YASHE(document.getElementById('yasheContainer'));
+							yashe.setOption("fullScreen", true);
+						</script>
+
+					
+
+
+					</body>
+					</html>`;
 	}
 }
 
