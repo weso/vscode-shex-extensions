@@ -1,2 +1,2 @@
-# vscode-yashe-extension
-YASHE extension for Visual Studio Code
+# vscode-shex-extension
+[ShEx](http://shex.io/) extension for Visual Studio Code
