@@ -11,9 +11,6 @@
 	],
 	"activationEvents": [
 		"onCommand:shex.start",
-		"onCommand:turtle.start",
-		"onCommand:shapeMap.start",
-		"onCommand:validation.start",
 		"onWebviewPanel:shex"
 	],
 	"repository": {
@@ -25,22 +22,7 @@
 		"commands": [
 			{
 				"command": "shex.start",
-				"title": "ShEx Editor",
-				"category": "ShEx"
-			},
-			{
-				"command": "turtle.start",
-				"title": "Turtle Editor",
-				"category": "ShEx"
-			},
-			{
-				"command": "shapeMap.start",
-				"title": "ShapeMap Editor",
-				"category": "ShEx"
-			},
-			{
-				"command": "validation.start",
-				"title": "Validation",
+				"title": "Start ShEx Editor",
 				"category": "ShEx"
 			}
 		]
