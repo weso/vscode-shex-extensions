@@ -9,7 +9,7 @@ ext install PabloMenndez.shex
 You can also find the extension in the extensions market simply by typing "shex"
 
 ## Usage
-Once you have installed this extension you will be able to view it features in any .shex file
+Once you have installed this extension you will be able to view it features in any .shex file. <br>
 Since VSCode works with scopes, the file must first be saved with the .shex extension.
 
 ![shex-usage](./public/shex-ext.gif)
