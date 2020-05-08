@@ -1,2 +1,2 @@
-# vscode-shex-extension
-[ShEx](http://shex.io/) extension for Visual Studio Code
+# shex-languaje-extension
+This extensions offers syntax highlighting for .shex files in Visual Studio Code
