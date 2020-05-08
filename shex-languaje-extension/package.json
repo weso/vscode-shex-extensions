@@ -2,10 +2,15 @@
     "name": "shex",
     "displayName": "shex",
     "description": "shex extension",
-    "version": "0.0.1",
+    "version": "0.0.2",
+    "publisher": "PabloMenndez", 
     "engines": {
         "vscode": "^1.44.0"
     },
+    "repository": {
+		"type": "git",
+		"url": "https://github.com/mistermboy/vscode-shex-extensions"
+	},
     "categories": [
         "Programming Languages"
     ],
