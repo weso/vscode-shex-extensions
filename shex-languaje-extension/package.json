@@ -20,6 +20,12 @@
             "language": "shex",
             "scopeName": "shexDoc",
             "path": "./syntaxes/shex.tmLanguage.json"
-        }]
+        }],
+        "snippets": [
+            {
+              "language": "shex",
+              "path": "./snippets/shex.json"
+            }
+          ]
     }
 }
