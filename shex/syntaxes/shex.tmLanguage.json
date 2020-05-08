@@ -7,6 +7,7 @@
 		{"include": "#operators"},
 		{"include": "#keywords"},
 		{"include": "#atpname"},
+		{ "include": "#special-predicate" },
 		{"include": "#comment"},
 		{ "include": "#literals" }
 	],
@@ -27,13 +28,14 @@
 			  }
 			}
 		  },
-		  "operators": {
-			"name": "keyword.operator.shex",
-			"match": "(?:\\|\\||=|\\*|\/|\\+|-|\\^|\\?)|(?i:or|and)\\s"
-		},
+		
 		"keywords": {
 			"name": "keyword.control.shex",
-			"match": "\\b(?i:prefix|import|base|extra|closed|start|iri|bnode|literal|nonliteral|external|length|minlength|maxlength|totaldigits|fractiondigits|mininclusive|maxinclusive|minexclusive|maxexclusive)|a\\b"
+			"match": "\\b(?i:prefix|base|import|extra|closed|start|iri|bnode|literal|nonliteral|external|length|minlength|maxlength|totaldigits|fractiondigits|mininclusive|maxinclusive|minexclusive|maxexclusive|or|and|not)\\b"
+		},
+		"expression-operators": {
+			"name": "support.class.shex",
+			"match": "(?:\\|\\||=|\\*|\/|\\+|-|\\^|\\?)\\s"
 		},
 		"atpname": {
 			"name": "entity.other.inherited-class.shex",
@@ -49,7 +51,18 @@
 			  { "include": "#numeric" },
 			  { "include": "#boolean" }
 			]
-		  },"string": {
+		  },
+		  "special-predicate": {
+			"name": "meta.specialPredicate.shex",
+			"match": "\\s(a)\\s",
+			"captures": {
+			  "1":{
+				"name": "keyword.control.turtle" 
+			  }
+			}
+		  },
+
+		  "string": {
 			"patterns": [
 			  { "include": "#single-squote-string-literal" },
 			  { "include": "#single-dquote-string-literal" },
