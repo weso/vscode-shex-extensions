@@ -1,5 +1,5 @@
 # shex-languaje-extension
-This extension provides highlighting and snippets for [ShEX](http://shex.io/)languaje
+This extension provides highlighting and snippets for [ShEX](http://shex.io/) languaje
 
 ## Installation
 Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.
