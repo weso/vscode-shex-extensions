@@ -7,7 +7,8 @@
 		{"include": "#operators"},
 		{"include": "#keywords"},
 		{"include": "#atpname"},
-		{"include": "#comment"}
+		{"include": "#comment"},
+		{ "include": "#literals" }
 	],
 	"repository": {
 		"iriref": {
@@ -41,6 +42,131 @@
 		  "comment": {
 			"name": "comment.line.number-sign.shex",
 			"match": "#.*$"
+		  },
+		  "literals": {
+			"patterns": [
+			  { "include": "#string"},
+			  { "include": "#numeric" },
+			  { "include": "#boolean" }
+			]
+		  },"string": {
+			"patterns": [
+			  { "include": "#single-squote-string-literal" },
+			  { "include": "#single-dquote-string-literal" },
+			  { "include": "#triple-squote-string-literal" },
+			  { "include": "#triple-dquote-string-literal" },
+			  { "include": "#triple-tick-string-literal" }
+			]
+		  },
+			  "single-squote-string-literal": {
+				  "name": "string.quoted.single.turtle",
+				  "begin": "'",
+				  "beginCaptures": {
+					  "0": {
+						  "name": "punctuation.definition.string.begin.turtle"
+					  }
+				  },
+				  "end": "'",
+				  "endCaptures": {
+					  "1": {
+						  "name": "punctuation.definition.string.end.turtle"
+					  },
+					  "2": {
+						  "name": "invalid.illegal.newline.turtle"
+					  }
+				  },
+				  "patterns": [
+					  { "include": "#string-character-escape" }
+				  ]
+			  },
+		  "single-dquote-string-literal": {
+				  "name": "string.quoted.double.turtle",
+				  "begin": "\"",
+				  "beginCaptures": {
+					  "0": {
+						  "name": "punctuation.definition.string.begin.turtle"
+					  }
+				  },
+				  "end": "\"",
+				  "endCaptures": {
+					  "0": {
+						  "name": "punctuation.definition.string.end.turtle"
+					  }
+				  },
+				  "patterns": [
+					  { "include": "#string-character-escape" }
+				  ]
+			  },
+		  "triple-squote-string-literal": {
+			"name": "string.quoted.triple.turtle",
+			"begin": "'''",
+			"end":   "'''",
+			"beginCaptures": {
+					  "0": {
+						  "name": "punctuation.definition.string.begin.turtle"
+					  }
+				  },
+			"endCaptures": {
+					  "0": {
+						  "name": "punctuation.definition.string.end.turtle"
+					  }
+				  },
+			"patterns": [
+					  { "include": "#string-character-escape" }
+				  ]
+		  },
+		  "triple-dquote-string-literal": {
+			"name": "string.quoted.triple.turtle",
+			"begin": "\"\"\"",
+			"end":   "\"\"\"",
+			"beginCaptures": {
+					  "0": {
+						  "name": "punctuation.definition.string.begin.turtle"
+					  }
+				  },
+			"endCaptures": {
+					  "0": {
+						  "name": "punctuation.definition.string.end.turtle"
+					  }
+				  },
+			"patterns": [
+					  { "include": "#string-character-escape" }
+				  ]
+		  },
+		  "triple-tick-string-literal": {
+			"name": "string.quoted.triple.turtle",
+			"begin": "```",
+			"end":   "```",
+			"beginCaptures": {
+					  "0": {
+						  "name": "punctuation.definition.string.begin.turtle"
+					  }
+				  },
+			"endCaptures": {
+					  "0": {
+						  "name": "punctuation.definition.string.end.turtle"
+					  }
+				  },
+			"patterns": [
+					  { "include": "#string-character-escape" }
+				  ]
+		  },
+		  "string-character-escape": {
+				  "name": "constant.character.escape.turtle",
+				  "match": "\\\\(x\\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)"
+			  },
+		  "numeric": {
+			"patterns":[
+			  { "include": "#integer" }
+			]
+		  },
+		  "integer": {
+			"name": "constant.numeric.turtle",
+			"match": "[+-]?(?:\\d+|[0-9]+\\.[0-9]*|\\.[0-9]+(?:[eE][+-]?\\d+)?)"
+		  },
+		  "boolean": {
+			"name": "constant.language.sparql",
+			"match": "\\b(?i:true|false)\\b"
 		  }
 
 	},
