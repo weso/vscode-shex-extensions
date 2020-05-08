@@ -2,25 +2,14 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "ShEx (Shape Expressions)",
 	"patterns": [
-		{"include": "#keywords"},
 		{"include": "#iriref"},
 		{"include": "#prefixed-name"},
+		{"include": "#operators"},
+		{"include": "#keywords"},
 		{"include": "#atpname"},
 		{"include": "#comment"}
 	],
 	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "variable.parameter.shex",
-				"match": "(IRI|(p|P)(r|R)(e|E)(f|F)(i|I)(x|X)|OR)"
-			}]
-		},
-		"pnameLn": {
-			"patterns": [{
-				"name": "entity.name.function.shex",
-				"match": "([A-Za-z]*\\:[A-Za-z]*)"
-			}]
-		},
 		"iriref": {
 			"name": "entity.name.type.iriref.shex",
 			"match": "<[^\\x20-\\x20<>\"{}|^`\\\\]*>"
@@ -37,6 +26,18 @@
 			  }
 			}
 		  },
+		  "operators": {
+			"name": "keyword.operator.shex",
+			"match": "(?:\\|\\||&&|=|!=|<|>|<=|>=|\\*|\/|\\+|-|\\||\\^|\\?|\\!)|(?i:or|and)\\s"
+		},
+		"keywords": {
+			"name": "keyword.control.shex",
+			"match": "\\b(?i:prefix|import|base|extra|closed|start|iri|bnode|literal|nonliteral|external|length|minlength|maxlength|totaldigits|fractiondigits|mininclusive|maxinclusive|minexclusive|maxexclusive)|a\\b"
+		},
+		"atpname": {
+			"name": "entity.other.inherited-class.shex",
+			"match": "(@:.*)|(@<[^\\x20-\\x20<>\"{}|^`\\\\]*>)>"
+		},
 		  "comment": {
 			"name": "comment.line.number-sign.shex",
 			"match": "#.*$"
