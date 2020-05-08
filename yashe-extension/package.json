@@ -1,6 +1,6 @@
 {
-	"name": "vscode-shex-extension",
-	"description": "ShEx extension for Visual Studio Code",
+	"name": "yashe",
+	"description": "YASHE (Yet Another ShEx Editor)",
 	"version": "0.0.2",
 	"publisher": "PabloMenndez",
 	"engines": {
