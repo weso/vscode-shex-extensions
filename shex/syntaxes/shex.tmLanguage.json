@@ -1,0 +1,47 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "ShEx (Shape Expressions)",
+	"patterns": [
+		{"include": "#keywords"},
+		{"include": "#iriref"},
+		{"include": "#prefixed-name"},
+		{"include": "#atpname"},
+		{"include": "#comment"}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "variable.parameter.shex",
+				"match": "(IRI|(p|P)(r|R)(e|E)(f|F)(i|I)(x|X)|OR)"
+			}]
+		},
+		"pnameLn": {
+			"patterns": [{
+				"name": "entity.name.function.shex",
+				"match": "([A-Za-z]*\\:[A-Za-z]*)"
+			}]
+		},
+		"iriref": {
+			"name": "entity.name.type.iriref.shex",
+			"match": "<[^\\x20-\\x20<>\"{}|^`\\\\]*>"
+		},
+		"prefixed-name": {
+			"name": "constant.complex.shex",
+			"match": "(\\w*:)(\\w*)",
+			"captures": {
+			  "1": {
+				"name": "storage.type.PNAME_NS.shex"
+			  },
+			  "2": {
+				"name": "support.variable.PN_LOCAL.shex"
+			  }
+			}
+		  },
+		  "comment": {
+			"name": "comment.line.number-sign.shex",
+			"match": "#.*$"
+		  }
+
+	},
+	"scopeName": "shexDoc"
+}
