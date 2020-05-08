@@ -1,14 +1,19 @@
 {
     "name": "shex",
     "displayName": "shex",
-    "description": "shex extension",
+    "description": "ShEx extension",
     "version": "0.0.1",
+    "publisher": "PabloMenndez",
     "engines": {
         "vscode": "^1.44.0"
     },
     "categories": [
         "Programming Languages"
     ],
+    "repository": {
+		"type": "git",
+		"url": "https://github.com/mistermboy/vscode-shex-extension"
+	},
     "contributes": {
         "languages": [{
             "id": "shex",
