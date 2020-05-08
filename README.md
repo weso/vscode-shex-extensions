@@ -1,2 +1,2 @@
-#vscode-shex-extensions
+# vscode-shex-extensions
 ShEx extensions for Visual Studio Code
