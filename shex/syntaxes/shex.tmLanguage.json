@@ -28,7 +28,7 @@
 		  },
 		  "operators": {
 			"name": "keyword.operator.shex",
-			"match": "(?:\\|\\||&&|=|!=|<|>|<=|>=|\\*|\/|\\+|-|\\||\\^|\\?|\\!)|(?i:or|and)\\s"
+			"match": "(?:\\|\\||=|\\*|\/|\\+|-|\\^|\\?)|(?i:or|and)\\s"
 		},
 		"keywords": {
 			"name": "keyword.control.shex",
