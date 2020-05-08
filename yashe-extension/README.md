@@ -13,3 +13,5 @@ Once you have installed the extension, you can easily use YASHE with the followi
 1. Open the Command Pallete(Ctrl+Shift+P)
 2. Type ShEx or YASHE 
 3. Execute the command called "ShEx: Start YASHE Editor"
+
+![yashe-ext](./public/yasheExt.gif)
