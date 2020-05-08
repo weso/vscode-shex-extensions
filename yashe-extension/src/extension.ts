@@ -5,28 +5,28 @@ export function activate(context: vscode.ExtensionContext) {
 	
 
 	context.subscriptions.push(
-		vscode.commands.registerCommand('shex.start', () => {
-			ShExPanel.createOrShow(context.extensionPath);
+		vscode.commands.registerCommand('yashe.start', () => {
+			YashePanel.createOrShow(context.extensionPath);
 		})
 	);
 
 	if (vscode.window.registerWebviewPanelSerializer) {
 		// Make sure we register a serializer in activation event
-		vscode.window.registerWebviewPanelSerializer(ShExPanel.viewType, {
+		vscode.window.registerWebviewPanelSerializer(YashePanel.viewType, {
 			async deserializeWebviewPanel(webviewPanel: vscode.WebviewPanel, state: any) {
 				console.log(`Got state: ${state}`);
-				ShExPanel.revive(webviewPanel, context.extensionPath);
+				YashePanel.revive(webviewPanel, context.extensionPath);
 			}
 		});
 	}
 }
 
 
-class ShExPanel {
+class YashePanel {
 
-	public static currentPanel: ShExPanel | undefined;
+	public static currentPanel: YashePanel | undefined;
 
-	public static readonly viewType = 'shex';
+	public static readonly viewType = 'yashe';
 
 	private readonly _panel: vscode.WebviewPanel;
 	private readonly _extensionPath: string;
@@ -38,15 +38,15 @@ class ShExPanel {
 			: undefined;
 
 		// If we already have a panel, show it.
-		if (ShExPanel.currentPanel) {
-			ShExPanel.currentPanel._panel.reveal(column);
+		if (YashePanel.currentPanel) {
+			YashePanel.currentPanel._panel.reveal(column);
 			return;
 		}
 
 		// Otherwise, create a new panel.
 		const panel = vscode.window.createWebviewPanel(
-			ShExPanel.viewType,
-			'ShEx Editor',
+			YashePanel.viewType,
+			'YASHE',
 			column || vscode.ViewColumn.One,
 			{
 				// Enable javascript in the webview
@@ -57,11 +57,11 @@ class ShExPanel {
 			}
 		);
 
-		ShExPanel.currentPanel = new ShExPanel(panel, extensionPath);
+		YashePanel.currentPanel = new YashePanel(panel, extensionPath);
 	}
 
 	public static revive(panel: vscode.WebviewPanel, extensionPath: string) {
-		ShExPanel.currentPanel = new ShExPanel(panel, extensionPath);
+		YashePanel.currentPanel = new YashePanel(panel, extensionPath);
 	}
 
 	private constructor(panel: vscode.WebviewPanel, extensionPath: string) {
@@ -101,7 +101,7 @@ class ShExPanel {
 	}
 
 	public dispose() {
-		ShExPanel.currentPanel = undefined;
+		YashePanel.currentPanel = undefined;
 
 		// Clean up our resources
 		this._panel.dispose();
@@ -116,7 +116,7 @@ class ShExPanel {
 
 	private _update() {
 		const webview = this._panel.webview;
-		this._panel.title = 'ShEx Editor';
+		this._panel.title = 'YASHE';
 		this._panel.webview.html = this._getHtmlForWebview(webview);
 	}
 

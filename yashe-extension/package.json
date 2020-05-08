@@ -1,7 +1,7 @@
 {
 	"name": "yashe",
 	"description": "Yet Another ShEx Editor",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"publisher": "PabloMenndez",
 	"engines": {
 		"vscode": "^1.38.0"
@@ -10,8 +10,8 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:shex.start",
-		"onWebviewPanel:shex"
+		"onCommand:yashe.start",
+		"onWebviewPanel:yashe"
 	],
 	"repository": {
 		"type": "git",
@@ -21,8 +21,8 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "shex.start",
-				"title": "Start ShEx Editor",
+				"command": "yashe.start",
+				"title": "Start YASHE Editor",
 				"category": "ShEx"
 			}
 		]
