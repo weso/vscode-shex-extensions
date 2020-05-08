@@ -1,7 +1,7 @@
 {
 	"name": "yashe",
-	"description": "YASHE (Yet Another ShEx Editor)",
-	"version": "0.0.2",
+	"description": "Yet Another ShEx Editor",
+	"version": "0.0.3",
 	"publisher": "PabloMenndez",
 	"engines": {
 		"vscode": "^1.38.0"
