@@ -6,3 +6,5 @@ Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter
 ```
 ext install PabloMenndez.yashe
 ```
+
+You can also find the extension in the extensions market simply by typing shex
