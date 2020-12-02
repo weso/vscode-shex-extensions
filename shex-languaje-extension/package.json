@@ -2,7 +2,7 @@
     "name": "shex",
     "displayName": "shex",
     "description": "shex extension",
-    "version": "0.0.2",
+    "version": "0.0.4",
     "publisher": "PabloMenndez", 
     "engines": {
         "vscode": "^1.44.0"

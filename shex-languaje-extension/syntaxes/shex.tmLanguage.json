@@ -31,7 +31,7 @@
 		
 		"keywords": {
 			"name": "keyword.control.shex",
-			"match": "\\b(?i:prefix|base|import|extra|closed|start|iri|bnode|literal|nonliteral|external|length|minlength|maxlength|totaldigits|fractiondigits|mininclusive|maxinclusive|minexclusive|maxexclusive|or|and|not)\\b"
+			"match": "\\b(?i:prefix|base|import|extra|closed|start|iri|bnode|literal|nonliteral|external|length|minlength|maxlength|totaldigits|fractiondigits|mininclusive|maxinclusive|minexclusive|maxexclusive|or|and|not|abstract|extends)\\b"
 		},
 		"expression-operators": {
 			"name": "support.class.shex",
