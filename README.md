@@ -19,7 +19,7 @@ Since VSCode works with scopes, the file must first be saved with the .shex exte
 
 
 ### Snippets
-Currently, the only snippet available is to autocomplete the most common wikidata prefixes.
+Currently, the only snippet available is for autocompleting the most common wikidata prefixes.
 ![wikidata-snippet](./shex-languaje-extension/public/wikidata-snippet.gif)
 
 
